@@ -1,0 +1,2 @@
+# Solitario
+Para Morzao

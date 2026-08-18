@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>Solitário</title>
+<meta name="description" content="Jogo de Paciência (Solitário Klondike)">
+<meta name="theme-color" content="#0b5c39">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Solitário">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Solitário <span class="subtitle">para Morzão</span></h1>
+    <div class="stats">
+      <div class="stat">⏱ <span id="timer">00:00</span></div>
+      <div class="stat">🔁 <span id="moves">0</span></div>
+      <div class="stat score-stat">★ <span id="score">0</span></div>
+    </div>
+    <div class="actions">
+      <button id="undoBtn" title="Desfazer">↩ Desfazer</button>
+      <button id="newGameBtn" title="Novo Jogo">🂡 Novo Jogo</button>
+    </div>
+  </header>
+
+  <main class="board">
+    <div class="top-row">
+      <div class="stock-waste">
+        <div id="stock" class="pile stock"></div>
+        <div id="waste" class="pile waste"></div>
+      </div>
+      <div class="foundations">
+        <div id="foundation-0" class="pile foundation" data-suit="♠"></div>
+        <div id="foundation-1" class="pile foundation" data-suit="♥"></div>
+        <div id="foundation-2" class="pile foundation" data-suit="♦"></div>
+        <div id="foundation-3" class="pile foundation" data-suit="♣"></div>
+      </div>
+    </div>
+    <div class="tableau" id="tableau">
+      <div class="pile column" id="column-0"></div>
+      <div class="pile column" id="column-1"></div>
+      <div class="pile column" id="column-2"></div>
+      <div class="pile column" id="column-3"></div>
+      <div class="pile column" id="column-4"></div>
+      <div class="pile column" id="column-5"></div>
+      <div class="pile column" id="column-6"></div>
+    </div>
+  </main>
+
+  <div id="winOverlay" class="win-overlay hidden">
+    <div class="win-card">
+      <h2>🎉 Ganhaste! 🎉</h2>
+      <p id="winStats"></p>
+      <button id="winNewGameBtn">Jogar de Novo</button>
+    </div>
+  </div>
+
+  <canvas id="confetti"></canvas>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
